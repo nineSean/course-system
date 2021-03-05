@@ -2,10 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import 'lib-flexible'
 
-interface Props {
-}
-
-const App: React.FunctionComponent = (props: Props) => {
+const App: React.FunctionComponent = () => {
   return (
     <div id="app">
       sean
