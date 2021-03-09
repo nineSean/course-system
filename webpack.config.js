@@ -24,7 +24,7 @@ module.exports = {
       '@': path.resolve(__dirname, 'src'),
       '~': path.resolve(__dirname, 'node_modules')
     },
-    extensions: ['ts', '.tsx', '.js', '.jsx', '.json']
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
   },
   module: {
     rules: [
@@ -57,6 +57,38 @@ module.exports = {
             loader: 'css-loader',
             options: {
               importLoaders: 3,
+            },
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: ['autoprefixer']
+              }
+            }
+          }, {
+            loader: 'px2rem-loader',
+            options: {
+              remUnit: 75,
+              remPrecision: 8,
+            },
+          },
+          'less-loader'
+        ],
+        exclude: /\.module\.less$/
+      }, {
+        test: /\.module\.less$/,
+        use: [
+          {
+            loader: isProd ? MiniCssExtractPlugin.loader : 'style-loader'
+          }, {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 3,
+              modules: {
+                compileType: 'module',
+                localIdentName: '[name]_[local]_[hash:base64:6]',
+                exportLocalsConvention: 'camelCase'
+              }
             },
           }, {
             loader: 'postcss-loader',
