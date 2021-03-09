@@ -5,8 +5,8 @@ const path = require('path')
 const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
   mode: isProd ? 'production' : 'development',
-  // devtool: isProd ? 'source-map' : false,
-  devtool: 'source-map',
+  devtool: isProd ? 'source-map' : false,
+  // devtool: 'source-map',
   entry: './src/index.tsx',
   output: {
     path: path.join(__dirname, 'dist'),

@@ -1,20 +1,23 @@
-import React, {FunctionComponent, PropsWithChildren} from 'react'
+import React, {FunctionComponent, PropsWithChildren,} from 'react'
 import {RouteComponentProps} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {HomeState, RootState} from "@/store/reducers"
-import styles from "./index.module.less"
+import HomeHeader from './components/HomeHeader'
+import actions from '@/store/actions/home'
 
-type Props = PropsWithChildren<RouteComponentProps> & HomeState
+type StateProps = ReturnType<typeof mapStateToProps>
+type DispatchProps = typeof actions
+type Props = PropsWithChildren<RouteComponentProps> & StateProps & DispatchProps
 
 const Home: FunctionComponent = (props: Props) => {
 
   return (
-    <div className={styles.homeColor}>
-      {props.title}
-    </div>
+    <>
+      <HomeHeader setCurrentCategory={props.setCurrentCategory} currentCategory={props.currentCategory}/>
+    </>
   )
 }
 
 const mapStateToProps: (state: RootState) => HomeState = (state) => state.home
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps, actions)(Home)
