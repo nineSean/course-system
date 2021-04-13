@@ -5,8 +5,13 @@ import promise from 'redux-promise'
 import thunk from 'redux-thunk'
 import history from '@/store/history'
 import rootReducers from '@/store/reducers'
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const store = applyMiddleware(routerMiddleware(history), thunk, promise, logger)(createStore)(rootReducers)
+const store = createStore(rootReducers, composeWithDevTools(
+  applyMiddleware(routerMiddleware(history), thunk, promise, logger),
+));
+
+// const store = applyMiddleware(routerMiddleware(history), thunk, promise, logger)(createStore)(rootReducers)
 
 export default store
 

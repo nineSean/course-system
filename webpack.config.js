@@ -46,8 +46,28 @@ module.exports = {
       }, {
         test: /\.css$/,
         use: [
-           isProd ? MiniCssExtractPlugin.loader : 'style-loader',
-          'css-loader'
+          isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: ['autoprefixer']
+              }
+            }
+          },
+          {
+            loader: 'px2rem-loader',
+            options: {
+              remUnit: 37.5,
+              remPrecision: 8,
+            },
+          }
         ]
       }, {
         test: /\.less$/,
@@ -118,6 +138,7 @@ module.exports = {
       template: './index.html'
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new MiniCssExtractPlugin()
   ],
   stats: {
     errorDetails: true,

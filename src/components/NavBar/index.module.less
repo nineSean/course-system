@@ -1,0 +1,23 @@
+@width: 100vw;
+@height: 100px;
+.nav-bar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: @width;
+  height: @height;
+  line-height: @height;
+  z-index: 999;
+  text-align: center;
+  font-size: 40px;
+  background-color: #2a2a2a;
+  color: #fff;
+}
+.left-icon{
+  position: absolute;
+  left: 20px;
+  line-height: @height;
+  & > svg {
+    font-size: 30px;
+  }
+}
