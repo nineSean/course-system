@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'http://172.16.188.197/api' : 'http://localhost:8000'
+axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'http://8.130.24.49/api' : 'http://localhost:8000'
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8'
 
 axios.interceptors.request.use(config => {
