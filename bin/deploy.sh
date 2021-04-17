@@ -11,12 +11,12 @@ git pull origin main
 #yarn install
 #echo "打包最新代码"
 #yarn build
-#echo "删除旧镜像"
-docker rmi $(docker images course-platform-client -a -q)
-echo "构建新镜像"
-docker build -t course-platform-client .
 echo "删除旧容器"
 docker stop course-platform-client
 docker rm course-platform-client
+echo "删除旧镜像"
+docker rmi $(docker images course-platform-client -a -q)
+echo "构建新镜像"
+docker build -t course-platform-client .
 echo "启动新容器"
 docker run -p 80:80 --name course-platform-client -d course-platform-client
