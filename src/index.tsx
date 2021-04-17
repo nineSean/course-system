@@ -15,7 +15,6 @@ import './assets/styles/common.less'
 import './index.less'
 import 'lib-flexible'
 import zhCN from 'antd/lib/locale/zh_CN'
-// import zhCN from "antd/lib/locale-provider/zh_CN"
 import {ConfigProvider} from "antd"
 
 const App: FunctionComponent = () => {

@@ -7,11 +7,11 @@ git reset --hard origin/main
 git clean -f
 echo "拉取最新代码"
 git pull origin main
-echo "安装依赖"
-yarn install
-echo "打包最新代码"
-yarn build
-echo "删除旧镜像"
+#echo "安装依赖"
+#yarn install
+#echo "打包最新代码"
+#yarn build
+#echo "删除旧镜像"
 docker rmi $(docker images course-platform-client -a -q)
 echo "构建新镜像"
 docker build -t course-platform-client .
