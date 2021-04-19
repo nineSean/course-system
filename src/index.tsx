@@ -1,7 +1,8 @@
 import React, {FunctionComponent,} from "react"
 import ReactDOM from "react-dom"
 import {Provider} from "react-redux"
-import {Redirect, Route, Switch,} from 'react-router-dom'
+import {Redirect, Switch,} from 'react-router-dom'
+import Route from './components/Route'
 import {ConnectedRouter} from "connected-react-router"
 import store from './store'
 import history from './store/history'

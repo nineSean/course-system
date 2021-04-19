@@ -1,9 +1,13 @@
-import axios from 'axios'
+import axios, {Canceler} from 'axios'
 
 axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'http://8.130.24.49/api' : 'http://localhost:8000'
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8'
 
+export const cancelTokens: Canceler[] = []
+const CancelToken = axios.CancelToken
+
 axios.interceptors.request.use(config => {
+  config.cancelToken = new CancelToken(cancel => cancelTokens.push(cancel))
   config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
   return config
 }, error => Promise.reject(error))
