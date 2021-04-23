@@ -1,5 +1,5 @@
 import * as types from '../action-types'
-import {AnyAction, Dispatch} from 'redux'
+import {Dispatch} from 'redux'
 import {register, login, validate} from "@/api/user"
 import { push } from 'connected-react-router'
 import {LoginPayload, LoginResponse, RegisterPayload, RegisterResponse} from '@/typings/user'
@@ -11,10 +11,18 @@ function saveTokenAndRedirect(token: string, dispatch: Dispatch){
 }
 
 export default {
-  validate(): AnyAction{
-    return {
-      type: types.VALIDATE,
-      payload: validate()
+  async validate(){
+    try {
+      const data = await validate()
+      return {
+        type: types.VALIDATE,
+        payload: data
+      }
+    } catch (error) {
+      message.error(error.message)
+      return {
+        type: types.UNEXIST
+      }
     }
   },
   register(data: RegisterPayload){
@@ -41,7 +49,7 @@ export default {
     return function(dispatch: Dispatch){
       localStorage.removeItem('token')
       dispatch({type: types.LOGOUT})
-      dispatch(push('login'))
+      push('login')
     }
   },
   uploadAvatar(avatar: string){

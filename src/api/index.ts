@@ -8,7 +8,9 @@ export const cancelTokens: Canceler[] = []
 const CancelToken = axios.CancelToken
 
 axios.interceptors.request.use(config => {
-  config.cancelToken = new CancelToken(cancel => cancelTokens.push(cancel))
+  config.cancelToken = new CancelToken(cancel => {
+    cancelTokens.push(cancel)
+  })
   config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
   return config
 }, error => Promise.reject(error))

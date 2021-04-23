@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import {RootState, ProfileState} from '@/store/reducers'
 import actions from '@/store/actions/user'
 import NavBar from '@/components/NavBar'
-import {AxiosError} from 'axios'
 import {message, Descriptions, Alert, Button, Upload} from 'antd'
 import LoginState from '@/typings/login-types'
 import styles from './index.module.less'
@@ -17,7 +16,7 @@ type DispatchProps = typeof actions
 type Props = PropsWithChildren<RouteComponentProps> & ProfileState & DispatchProps
 const Profile: FunctionComponent = (props: Props) => {
   useEffect(() => {
-    props.validate().catch((error: AxiosError) => message.error(error.message))
+    props.validate()
   }, [])
   const [loading, setLoading] = useState(false)
   const uploadButton = (
