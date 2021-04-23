@@ -1,6 +1,7 @@
 import axios, {Canceler} from 'axios'
 
-axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'http://8.130.24.49/api' : 'http://localhost:8000'
+export const baseURL =  process.env.NODE_ENV === 'production' ? 'http://8.130.24.49/api' : 'http://localhost:8000'
+axios.defaults.baseURL = baseURL
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8'
 
 export const cancelTokens: Canceler[] = []

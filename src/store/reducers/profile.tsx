@@ -37,6 +37,14 @@ const reducer = (state: ProfileState = initialState, action: AnyAction): Profile
       error: null,
       loginState: LoginState.UNLOGINED
     }
+  case types.UPLOAD_AVATAR:
+    return {
+      ...state,
+      user: {
+        ...state.user,
+        avatar: action.payload
+      }
+    }
   default:
     return state
   }

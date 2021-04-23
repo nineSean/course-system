@@ -43,6 +43,12 @@ export default {
       dispatch({type: types.LOGOUT})
       dispatch(push('login'))
     }
-  }
+  },
+  uploadAvatar(avatar: string){
+    return {
+      type: types.UPLOAD_AVATAR,
+      payload: avatar
+    }
+  },
 }
 
