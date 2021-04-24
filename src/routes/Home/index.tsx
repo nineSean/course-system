@@ -1,19 +1,23 @@
-import React, {FunctionComponent, PropsWithChildren,} from 'react'
+import React, {FunctionComponent, PropsWithChildren, useEffect,} from 'react'
 import {RouteComponentProps} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {HomeState, RootState} from "@/store/reducers"
 import HomeHeader from './components/HomeHeader'
 import actions from '@/store/actions/home'
+import Slide from '@/components/Slide'
+import styles from './index.module.less'
 
 type StateProps = ReturnType<typeof mapStateToProps>
 type DispatchProps = typeof actions
 type Props = PropsWithChildren<RouteComponentProps> & StateProps & DispatchProps
 
 const Home: FunctionComponent = (props: Props) => {
-
   return (
     <>
       <HomeHeader setCurrentCategory={props.setCurrentCategory} currentCategory={props.currentCategory}/>
+      <section className={styles.homeSlide}>
+        <Slide getSlides={props.getSlides} slides={props.slides}/>
+      </section>
     </>
   )
 }

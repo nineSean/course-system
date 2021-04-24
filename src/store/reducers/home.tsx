@@ -1,12 +1,15 @@
 import {AnyAction} from 'redux'
 import * as types from '../action-types'
+import {Slide} from '@/typings/slide'
 
 export interface HomeState {
-  currentCategory: string
+  currentCategory: string,
+  slides: Slide[]
 }
 
 const initialState: HomeState = {
   currentCategory: 'all',
+  slides: [],
 }
 const reducer = (state: HomeState = initialState, action: AnyAction): HomeState => {
   switch (action.type) {
@@ -14,6 +17,11 @@ const reducer = (state: HomeState = initialState, action: AnyAction): HomeState 
     return {
       ...state,
       currentCategory: action.payload
+    }
+  case types.GET_SLIDES:
+    return {
+      ...state,
+      slides: action.payload.data
     }
   default:
     return state

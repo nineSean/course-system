@@ -9,7 +9,7 @@ import LoginState from '@/typings/login-types'
 import styles from './index.module.less'
 import {LoadingOutlined} from '@ant-design/icons'
 import {UploadOutlined} from "@ant-design/icons/lib"
-import {baseURL} from '@/api/index'
+import {baseURL} from '@/api'
 import {UploadChangeParam} from "antd/lib/upload"
 
 type DispatchProps = typeof actions
