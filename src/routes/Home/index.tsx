@@ -6,6 +6,7 @@ import HomeHeader from './components/HomeHeader'
 import actions from '@/store/actions/home'
 import Slide from '@/components/Slide'
 import styles from './index.module.less'
+import CourseList from './components/CourseList'
 
 type StateProps = ReturnType<typeof mapStateToProps>
 type DispatchProps = typeof actions
@@ -18,6 +19,10 @@ const Home: FunctionComponent = (props: Props) => {
       <section className={styles.homeSlide}>
         <Slide getSlides={props.getSlides} slides={props.slides}/>
       </section>
+      <CourseList
+        courses={props.course}
+        getCourses={props.getCourses}
+      />
     </>
   )
 }
