@@ -3,6 +3,7 @@ import React, {FC, useEffect} from "react"
 import {ISlide} from "@/typings/slide"
 
 interface Props {
+  className?: string
   slides: ISlide[]
   getSlides: () => any
 }
@@ -12,7 +13,7 @@ const Slide: FC<Props> = (props: Props) => {
     !props.slides.length && props.getSlides()
   }, [])
   return (
-    <Carousel autoplay>
+    <Carousel autoplay className={props.className}>
       {
         props.slides.map((slide, idx) => <img
           src={slide.url}

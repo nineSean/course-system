@@ -16,9 +16,7 @@ const Home: FunctionComponent = (props: Props) => {
   return (
     <>
       <HomeHeader setCurrentCategory={props.setCurrentCategory} currentCategory={props.currentCategory}/>
-      <section className={styles.homeSlide}>
-        <Slide getSlides={props.getSlides} slides={props.slides}/>
-      </section>
+      <Slide className={styles.homeSlide} getSlides={props.getSlides} slides={props.slides}/>
       <CourseList
         courses={props.course}
         getCourses={props.getCourses}
