@@ -21,7 +21,8 @@ export default {
     } catch (error) {
       message.error(error.message)
       return {
-        type: types.UNEXIST
+        type: types.VALIDATE,
+        payload: error
       }
     }
   },

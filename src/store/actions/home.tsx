@@ -48,7 +48,7 @@ export default {
   refreshCourses(){
     return async function(dispatch: Dispatch, getState: () => RootState){
       try {
-        const {category, courses: {limit}} = getState().home
+        const {category, course: {limit}} = getState().home
         dispatch({
           type: types.SET_COURSES_LOADING,
           payload: true
