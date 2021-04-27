@@ -28,13 +28,13 @@ export default {
   getCourses(){
     return async function(dispatch: Dispatch, getState: () => RootState){
       try {
-        const {category, course: {hasMore, offset, limit, loading}} = getState().home
+        const {currentCategory, course: {hasMore, offset, limit, loading}} = getState().home
         if (hasMore && !loading) {
           dispatch({
             type: types.SET_COURSES_LOADING,
             payload: true
           })
-          const response = await getCourses(category, offset, limit)
+          const response = await getCourses(currentCategory, offset, limit)
           dispatch({
             type: types.SET_COURSES,
             payload: response.data
@@ -48,12 +48,12 @@ export default {
   refreshCourses(){
     return async function(dispatch: Dispatch, getState: () => RootState){
       try {
-        const {category, course: {limit}} = getState().home
+        const {currentCategory, course: {limit}} = getState().home
         dispatch({
           type: types.SET_COURSES_LOADING,
           payload: true
         })
-        const response = await getCourses(category, 0, limit)
+        const response = await getCourses(currentCategory, 0, limit)
         dispatch({
           type: types.REFRESH_COURSE,
           payload: response.data

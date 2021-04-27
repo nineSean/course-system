@@ -1,4 +1,6 @@
-export function downRefresh(callback: Function, container: HTMLElement = document.documentElement) {
+export * from './useDownRefresh'
+export * from './useLoadMore'
+export function downRefresh(callback: Function, container: HTMLElement) {
   let startY: number
   let currentY: number
   let scrollTop: number

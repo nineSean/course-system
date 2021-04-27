@@ -7,27 +7,22 @@ import actions from '@/store/actions/home'
 import Slide from '@/components/Slide'
 import styles from './index.module.less'
 import CourseList from './components/CourseList'
-import {downRefresh, upLoadMore} from "@/utils"
+import {useDownRefresh, useLoadMore} from "@/utils"
 
 type StateProps = ReturnType<typeof mapStateToProps>
 type DispatchProps = typeof actions
 type Props = PropsWithChildren<RouteComponentProps> & StateProps & DispatchProps
 const Home: FunctionComponent = (props: Props) => {
   const mainContentRef = useRef(null)
-  useEffect(() => {
-    const onTouchstart = downRefresh(props.refreshCourses, mainContentRef.current)
-    const onScroll = upLoadMore(props.getCourses, mainContentRef.current)
-    return () => {
-      mainContentRef.current.removeEventListener('touchstart', onTouchstart)
-      mainContentRef.current.removeEventListener('scroll', onScroll)
-    }
-  }, [])
+  useDownRefresh(props.refreshCourses, mainContentRef)
+  useLoadMore(props.getCourses, mainContentRef)
 
   return (
     <>
       <HomeHeader
         setCurrentCategory={props.setCurrentCategory}
         currentCategory={props.currentCategory}
+        refresh={props.refreshCourses}
       />
       <div
         className={styles.mainContent}

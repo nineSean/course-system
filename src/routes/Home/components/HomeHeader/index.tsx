@@ -25,6 +25,7 @@ const transitionStyles: TransitionStyles = {
 interface Props {
   currentCategory: string
   setCurrentCategory: (currentCategory: string) => void
+  refresh?: () => void
 }
 
 const HomeHeader: FunctionComponent<Props> = (props: Props) => {
@@ -34,6 +35,7 @@ const HomeHeader: FunctionComponent<Props> = (props: Props) => {
     const category = target.dataset['category']
     props.setCurrentCategory(category)
     setIsMenuVisible(false)
+    props.refresh()
   }
   return (
     <div className={styles.homeHeader}>
