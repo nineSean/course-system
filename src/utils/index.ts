@@ -46,6 +46,28 @@ export function downRefresh(callback: Function, container: HTMLElement = documen
   return onTouchstart
 }
 
+export function upLoadMore(callback: Function, container: HTMLElement){
+  const onScroll = debounce(loadMore)
+  const height = container.clientHeight
+  function loadMore(e: Event) {
+    const scrollTop = container.scrollTop
+    const scrollHeight = container.scrollHeight
+    if (scrollHeight - (scrollTop + height) < 20) {
+      callback()
+    }
+  }
+  container.addEventListener('scroll', onScroll)
+  return onScroll
+}
+
+function debounce(fn: Function, ms = 100) {
+  let timeId: any
+  return function(){
+    clearTimeout(timeId)
+    timeId = setTimeout(fn.bind(this, arguments), ms)
+  }
+}
+
 function throttle(fn: Function, ms: number = 20) {
   let isThrottled = false
   let savedThis: any
