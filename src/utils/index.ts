@@ -48,13 +48,13 @@ export function downRefresh(callback: Function, container: HTMLElement) {
   return onTouchstart
 }
 
-export function upLoadMore(callback: Function, container: HTMLElement){
+export function upLoadMore(callback: Function, container: HTMLElement, threshold = 20){
   const onScroll = debounce(loadMore)
   const height = container.clientHeight
   function loadMore(e: Event) {
     const scrollTop = container.scrollTop
     const scrollHeight = container.scrollHeight
-    if (scrollHeight - (scrollTop + height) < 20) {
+    if (scrollHeight - (scrollTop + height) < threshold) {
       callback()
     }
   }
@@ -62,7 +62,7 @@ export function upLoadMore(callback: Function, container: HTMLElement){
   return onScroll
 }
 
-function debounce(fn: Function, ms = 100) {
+export function debounce(fn: Function, ms = 100) {
   let timeId: any
   return function(){
     clearTimeout(timeId)
@@ -70,7 +70,7 @@ function debounce(fn: Function, ms = 100) {
   }
 }
 
-function throttle(fn: Function, ms: number = 20) {
+export function throttle(fn: Function, ms: number = 20) {
   let isThrottled = false
   let savedThis: any
   let savedArgs: any

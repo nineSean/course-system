@@ -1,13 +1,16 @@
-import React, {FC, useEffect} from "react"
+import React, {FC, RefObject, useEffect} from "react"
 import {MenuOutlined} from '@ant-design/icons'
 import styles from './index.module.less'
 import {Alert, Button, Card, Skeleton} from "antd"
 import {Courses} from "@/store/reducers/home"
 import {Link} from "react-router-dom"
+import {ICourse} from "@/typings"
+import VirtualList from "@/components/VirtualList"
 
 interface IProps {
   courses: Courses
   getCourses: any
+  containerRef?: RefObject<HTMLElement>
 }
 
 const CourseList: FC<IProps> = (props: IProps) => {
@@ -24,14 +27,18 @@ const CourseList: FC<IProps> = (props: IProps) => {
         active
         paragraph={{rows: 8}}
       >
-        {
-          props.courses.list.map(course => (
+        <VirtualList
+          itemHeight={650 / 75 * parseFloat(document.documentElement.style.fontSize)}
+          list={props.courses.list}
+          containerRef={props.containerRef}
+          template={(course: ICourse, styles) => (
             <Link
               key={course.id}
               to={{
                 pathname: `/detail/${course.id}`,
                 state: course
               }}
+              style={styles}
             >
               <Card
                 hoverable
@@ -47,8 +54,8 @@ const CourseList: FC<IProps> = (props: IProps) => {
                 />
               </Card>
             </Link>
-          ))
-        }
+          )}
+        />
         {
           props.courses.hasMore ? (
             <Button

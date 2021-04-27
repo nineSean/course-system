@@ -1,4 +1,4 @@
-import React, {FunctionComponent, PropsWithChildren, useEffect, useRef,} from 'react'
+import React, {FunctionComponent, PropsWithChildren, useRef,} from 'react'
 import {RouteComponentProps} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {HomeState, RootState} from "@/store/reducers"
@@ -36,6 +36,7 @@ const Home: FunctionComponent = (props: Props) => {
         <CourseList
           courses={props.course}
           getCourses={props.getCourses}
+          containerRef={mainContentRef}
         />
       </div>
     </>
