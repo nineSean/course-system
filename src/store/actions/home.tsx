@@ -62,6 +62,11 @@ export default {
         message.error(error.message)
       }
     }
+  },
+  initCourses(){
+    return {
+      type: types.INIT_COURSES
+    }
   }
 }
 

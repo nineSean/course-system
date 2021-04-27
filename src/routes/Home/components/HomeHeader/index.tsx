@@ -26,6 +26,7 @@ interface Props {
   currentCategory: string
   setCurrentCategory: (currentCategory: string) => void
   refresh?: () => void
+  callback?: () => void
 }
 
 const HomeHeader: FunctionComponent<Props> = (props: Props) => {
@@ -33,9 +34,11 @@ const HomeHeader: FunctionComponent<Props> = (props: Props) => {
   const setCurrentCategory = (event: React.MouseEvent<HTMLUListElement>) => {
     const target = event.target as HTMLUListElement
     const category = target.dataset['category']
-    props.setCurrentCategory(category)
     setIsMenuVisible(false)
-    props.refresh()
+    if (props.currentCategory === category) return
+    props.setCurrentCategory(category)
+    props.refresh?.()
+    props.callback?.()
   }
   return (
     <div className={styles.homeHeader}>

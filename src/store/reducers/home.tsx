@@ -70,6 +70,18 @@ const reducer = (state: HomeState = initialState, action: AnyAction): HomeState 
         offset: action.payload.list.length
       }
     }
+  case types.INIT_COURSES:
+    return {
+      ...state,
+      currentCategory: 'all',
+      course: {
+        loading: false,
+        list: [],
+        hasMore: true,
+        offset: 0,
+        limit: 5,
+      }
+    }
   default:
     return state
   }

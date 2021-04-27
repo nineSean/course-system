@@ -6,15 +6,18 @@ import {Courses} from "@/store/reducers/home"
 import {Link} from "react-router-dom"
 import {ICourse} from "@/typings"
 import VirtualList from "@/components/VirtualList"
+import {AnyAction} from "redux"
 
 interface IProps {
   courses: Courses
   getCourses: any
+  initCourses: () => AnyAction
   containerRef?: RefObject<HTMLElement>
 }
 
 const CourseList: FC<IProps> = (props: IProps) => {
   useEffect(() => {
+    props.initCourses()
     props.getCourses()
   }, [])
   return (

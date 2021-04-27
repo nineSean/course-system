@@ -1,4 +1,4 @@
-import React, {FunctionComponent, PropsWithChildren, useRef,} from 'react'
+import React, {FunctionComponent, PropsWithChildren, useEffect, useRef,} from 'react'
 import {RouteComponentProps} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {HomeState, RootState} from "@/store/reducers"
@@ -23,6 +23,7 @@ const Home: FunctionComponent = (props: Props) => {
         setCurrentCategory={props.setCurrentCategory}
         currentCategory={props.currentCategory}
         refresh={props.refreshCourses}
+        callback={() => mainContentRef.current.scrollTop = 0}
       />
       <div
         className={styles.mainContent}
@@ -34,6 +35,7 @@ const Home: FunctionComponent = (props: Props) => {
           slides={props.slides}
         />
         <CourseList
+          initCourses={props.initCourses}
           courses={props.course}
           getCourses={props.getCourses}
           containerRef={mainContentRef}

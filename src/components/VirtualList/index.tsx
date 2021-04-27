@@ -26,7 +26,6 @@ const VirtualList: FC<IProps> = (props: IProps) => {
     element = props.containerRef.current
     element.addEventListener('scroll', onScroll)
 
-    element.scrollTop = 0
     setList(props.list.map((item, index) => ({...item, index})))
     return () => {
       element.removeEventListener('scroll', onScroll)
@@ -42,7 +41,7 @@ const VirtualList: FC<IProps> = (props: IProps) => {
     let start = Math.floor(deltaY / props.itemHeight)
     let end = start + size
     start = start - 1 > 0 ? (start - 1) : 0
-    end = end + 2 > props.list.length ? props.list.length : end + 2
+    end = end + 1 > props.list.length ? props.list.length : end + 1
     setList(props.list.map((item, index) => ({...item, index})).slice(start, end))
   }
 
