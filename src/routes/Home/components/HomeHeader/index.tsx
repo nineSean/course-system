@@ -36,9 +36,9 @@ const HomeHeader: FunctionComponent<Props> = (props: Props) => {
     const category = target.dataset['category']
     setIsMenuVisible(false)
     if (props.currentCategory === category) return
+    props.callback?.()
     props.setCurrentCategory(category)
     props.refresh?.()
-    props.callback?.()
   }
   return (
     <div className={styles.homeHeader}>

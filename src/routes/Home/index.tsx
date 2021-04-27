@@ -23,7 +23,7 @@ const Home: FunctionComponent = (props: Props) => {
         setCurrentCategory={props.setCurrentCategory}
         currentCategory={props.currentCategory}
         refresh={props.refreshCourses}
-        callback={() => mainContentRef.current.scrollTop = 0}
+        callback={() => props.initCourses()}
       />
       <div
         className={styles.mainContent}

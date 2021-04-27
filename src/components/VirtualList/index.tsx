@@ -25,7 +25,6 @@ const VirtualList: FC<IProps> = (props: IProps) => {
     const onScroll = debounce(_onScroll)
     element = props.containerRef.current
     element.addEventListener('scroll', onScroll)
-
     setList(props.list.map((item, index) => ({...item, index})))
     return () => {
       element.removeEventListener('scroll', onScroll)
