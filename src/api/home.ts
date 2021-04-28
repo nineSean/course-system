@@ -14,3 +14,7 @@ export async function getCourses(category = 'all', offset: number, limit: number
   })
 }
 
+export function getCourse<Data>(id: string) {
+  return axios.get<Data, Data>(`/course/${id}`)
+}
+

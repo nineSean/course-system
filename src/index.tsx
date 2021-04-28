@@ -11,6 +11,7 @@ import Home from './routes/Home'
 import Profile from './routes/Profile'
 import Register from './routes/Register'
 import Login from './routes/Login'
+import Detail from './routes/Detail'
 import Tabs from './components/Tabs'
 import './assets/styles/common.less'
 import './index.less'
@@ -45,6 +46,10 @@ const App: FunctionComponent = () => {
               <Route
                 path="/login"
                 component={Login}
+              />
+              <Route
+                path="/detail/:id"
+                component={Detail}
               />
               <Redirect to="/" />
             </Switch>

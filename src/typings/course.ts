@@ -7,3 +7,9 @@ export interface ICourse{
   poster: string
   category: string
 }
+
+export interface ICourseResponse {
+  success: boolean
+  data: ICourse
+  message?: string
+}
