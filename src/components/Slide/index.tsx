@@ -1,6 +1,8 @@
-import {Carousel} from "antd"
+import Carousel from "react-slick"
 import React, {FC, useEffect} from "react"
 import {ISlide} from "@/typings/slide"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
 interface Props {
   className?: string
@@ -12,8 +14,15 @@ const Slide: FC<Props> = (props: Props) => {
   useEffect(() => {
     !props.slides.length && props.getSlides()
   }, [])
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
   return (
-    <Carousel autoplay className={props.className}>
+    <Carousel {...settings} className={props.className}>
       {
         props.slides.map((slide, idx) => <img
           src={slide.url}
