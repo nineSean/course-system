@@ -8,6 +8,7 @@ import Slide from '@/components/Slide'
 import styles from './index.module.less'
 import CourseList from './components/CourseList'
 import {useDownRefresh, useLoadMore} from "@/utils"
+import {User} from "@/typings"
 
 type StateProps = ReturnType<typeof mapStateToProps>
 type DispatchProps = typeof actions
@@ -27,6 +28,7 @@ const Home: FunctionComponent = (props: Props) => {
         callback={() => props.initCourses()}
         isMenuVisible={isMenuVisible}
         setMenuVisible={setIsMenuVisible}
+        avatar={props.user.avatar}
       />
       <div
         className={styles.mainContent}
@@ -48,5 +50,5 @@ const Home: FunctionComponent = (props: Props) => {
     </>
   )
 }
-const mapStateToProps: (state: RootState) => HomeState = (state) => state.home
+const mapStateToProps: (state: RootState) => HomeState & {user: User}  = (state) => ({...state.home, user: {...state.profile.user}})
 export default connect(mapStateToProps, actions)(Home)

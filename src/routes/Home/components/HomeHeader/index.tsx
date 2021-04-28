@@ -9,12 +9,14 @@ const defaultStyles = {
   transition: `opacity ${duration}ms ease-in-out`,
   opacity: 0
 }
+
 interface TransitionStyles {
   entering: React.CSSProperties,
   entered: React.CSSProperties,
   exiting: React.CSSProperties,
   exited: React.CSSProperties
 }
+
 const transitionStyles: TransitionStyles = {
   entering: {opacity: 1},
   entered: {opacity: 1},
@@ -29,6 +31,7 @@ interface Props {
   setMenuVisible: (visible: boolean) => void
   refresh?: () => void
   callback?: () => void
+  avatar?: string
 }
 
 const HomeHeader: FunctionComponent<Props> = (props: Props) => {
@@ -43,10 +46,21 @@ const HomeHeader: FunctionComponent<Props> = (props: Props) => {
   }
   return (
     <div className={styles.homeHeader}>
-      <img src={logo}
-        alt="logo"
-        className={styles.logo}
-      />
+      {
+        props.avatar
+          ?
+          <img
+            src={props.avatar}
+            alt="avatar"
+            className={styles.avatar}
+          />
+          :
+          <img
+            src={logo}
+            alt="logo"
+            className={styles.logo}
+          />
+      }
       <BarsOutlined onClick={() => props.setMenuVisible(!props.isMenuVisible)}/>
       <Transition
         in={props.isMenuVisible}
