@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from 'react'
+import React, {FunctionComponent,} from 'react'
 import logo from '@/assets/images/logo.png'
 import {BarsOutlined} from '@ant-design/icons'
 import styles from './index.module.less'
@@ -25,16 +25,17 @@ const transitionStyles: TransitionStyles = {
 interface Props {
   currentCategory: string
   setCurrentCategory: (currentCategory: string) => void
+  isMenuVisible: boolean
+  setMenuVisible: (visible: boolean) => void
   refresh?: () => void
   callback?: () => void
 }
 
 const HomeHeader: FunctionComponent<Props> = (props: Props) => {
-  const [isMenuVisible, setIsMenuVisible] = useState(false)
   const setCurrentCategory = (event: React.MouseEvent<HTMLUListElement>) => {
     const target = event.target as HTMLUListElement
     const category = target.dataset['category']
-    setIsMenuVisible(false)
+    props.setMenuVisible(false)
     if (props.currentCategory === category) return
     props.callback?.()
     props.setCurrentCategory(category)
@@ -46,9 +47,9 @@ const HomeHeader: FunctionComponent<Props> = (props: Props) => {
         alt="logo"
         className={styles.logo}
       />
-      <BarsOutlined onClick={() => setIsMenuVisible(!isMenuVisible)}/>
+      <BarsOutlined onClick={() => props.setMenuVisible(!props.isMenuVisible)}/>
       <Transition
-        in={isMenuVisible}
+        in={props.isMenuVisible}
         timeout={duration}
         unmountOnExit
       >

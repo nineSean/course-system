@@ -14,7 +14,7 @@ import Login from './routes/Login'
 import Tabs from './components/Tabs'
 import './assets/styles/common.less'
 import './index.less'
-import 'lib-flexible'
+import './utils/flexiable'
 import zhCN from 'antd/lib/locale/zh_CN'
 import {ConfigProvider} from "antd"
 
