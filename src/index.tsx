@@ -19,6 +19,7 @@ const Profile = lazy(()=>import(/*webpackPrefetch:true*/'./routes/Profile'))
 const Register = lazy(()=>import(/*webpackPrefetch:true*/'./routes/Register'))
 const Login = lazy(()=>import(/*webpackPrefetch:true*/'./routes/Login'))
 const Detail = lazy(()=>import(/*webpackPrefetch:true*/'./routes/Detail'))
+const Cart = lazy(()=>import(/*webpackPrefetch:true*/'./routes/Cart'))
 
 const App: FunctionComponent = () => {
   return (
@@ -54,6 +55,10 @@ const App: FunctionComponent = () => {
                 <Route
                   path="/detail/:id"
                   component={Detail}
+                />
+                <Route
+                  path="/cart"
+                  component={Cart}
                 />
                 <Redirect to="/" />
               </Switch>

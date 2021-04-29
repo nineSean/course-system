@@ -10,9 +10,9 @@ const Tabs = () => {
         <HomeOutlined/>
         <span>首页</span>
       </NavLink>
-      <NavLink to='/mine'>
+      <NavLink to='/cart'>
         <ShoppingCartOutlined/>
-        <span>课程</span>
+        <span>购物车</span>
       </NavLink>
       <NavLink to='/profile'>
         <UserOutlined/>

@@ -1,5 +1,12 @@
 export * from './useDownRefresh'
 export * from './useLoadMore'
+
+export function extractNumber(str: string): number{
+  return parseFloat(str.replace(/\D*(\d*\.\d*).*/, (_, p1) => {
+    return p1
+  }))
+}
+
 export function downRefresh(callback: Function, container: HTMLElement) {
   let startY: number
   let currentY: number

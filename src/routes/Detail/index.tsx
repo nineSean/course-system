@@ -4,14 +4,17 @@ import {StaticContext} from 'react-router'
 import {connect} from "react-redux"
 import {ICourse, ICourseResponse} from "@/typings"
 import {getCourse} from '@/api/home'
-import {Card, message } from "antd"
+import {Button, Card, message} from "antd"
 import NavBar from "@/components/NavBar"
+import actions from '@/store/actions/cart'
+import {ShoppingCartOutlined} from "@ant-design/icons/lib"
+import styles from './index.module.less'
 
 interface IParams {
   id: string
 }
 
-type Props = PropsWithChildren<RouteComponentProps<IParams, StaticContext, ICourse>>
+type Props = PropsWithChildren<RouteComponentProps<IParams, StaticContext, ICourse>> & typeof actions
 
 const CourseDetail: FC<Props> = (props: Props) => {
   const [course, setCourse] = useState<ICourse>({} as ICourse)
@@ -36,14 +39,22 @@ const CourseDetail: FC<Props> = (props: Props) => {
       <Card
         hoverable
         style={{width: '100%'}}
-        cover={<video src={course.video} controls autoPlay={false}/>}
+        cover={<video src={course.video} controls autoPlay={false} className={styles.video}/>}
       >
         <Card.Meta
           title={course.title}
-          description={<p>价格：{course.price}</p>}
+          description={
+            <>
+              <p>价格：{course.price}</p>
+              <Button icon={<ShoppingCartOutlined style={{fontSize: '32px'}}/>} type={'primary'} onClick={() => {
+                props.addCartItem(course)
+                message.success('已添加至购物车', .5)
+              }}>加入购物车</Button>
+            </>
+          }
         />
       </Card>
     </>
   )
 }
-export default connect()(CourseDetail)
+export default connect(null , actions)(CourseDetail)

@@ -50,7 +50,7 @@ export default {
     return function(dispatch: Dispatch){
       localStorage.removeItem('token')
       dispatch({type: types.LOGOUT})
-      push('login')
+      dispatch(push('/login'))
     }
   },
   uploadAvatar(avatar: string){

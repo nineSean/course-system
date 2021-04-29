@@ -4,12 +4,14 @@ import history from '../history'
 import home, {HomeState} from './home'
 import profile, {ProfileState} from './profile'
 import mine, {MineState} from './mine'
+import cart, {CartState} from './cart'
 
 const reducers: ReducersMapObject = {
   router: connectRouter(history),
   home,
   profile,
-  mine
+  mine,
+  cart,
 }
 
 type RootState = {
@@ -24,5 +26,6 @@ export {
   HomeState,
   ProfileState,
   MineState,
+  CartState
 }
 export default rootReducer
