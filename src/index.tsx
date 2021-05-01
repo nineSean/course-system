@@ -13,7 +13,6 @@ import zhCN from 'antd/lib/locale/zh_CN'
 import {ConfigProvider, Spin} from "antd"
 import Tabs from './components/Tabs'
 
-const Mine = lazy(()=>import(/*webpackPrefetch:true*/'./routes/Mine'))
 const Home = lazy(()=>import(/*webpackPrefetch:true*/'./routes/Home'))
 const Profile = lazy(()=>import(/*webpackPrefetch:true*/'./routes/Profile'))
 const Register = lazy(()=>import(/*webpackPrefetch:true*/'./routes/Register'))
@@ -35,10 +34,6 @@ const App: FunctionComponent = () => {
                   path="/"
                   exact
                   component={Home}
-                />
-                <Route
-                  path="/mine"
-                  component={Mine}
                 />
                 <Route
                   path="/profile"
