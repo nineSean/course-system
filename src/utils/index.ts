@@ -17,6 +17,8 @@ export function downRefresh(callback: Function, container: HTMLElement) {
 
   function onTouchstart(e: TouchEvent){
     startY = e.touches[0].pageY
+    const untriggeredHeight = container.children[0].getBoundingClientRect().bottom
+    if (startY < untriggeredHeight) return
     container.addEventListener('touchmove', onTouchmove)
     container.addEventListener('touchend', _onTouchend)
   }
