@@ -46,7 +46,7 @@ const CourseDetail: FC<Props> = (props: Props) => {
           description={
             <>
               <p>价格：{course.price}</p>
-              <Button icon={<ShoppingCartOutlined style={{fontSize: '32px'}}/>} type={'primary'} onClick={() => {
+              <Button className={styles.buyButton} icon={<ShoppingCartOutlined className={styles.buyIcon}/>} type={'primary'} onClick={() => {
                 props.addCartItem(course)
                 message.success('已添加至购物车', .5)
               }}>加入购物车</Button>
