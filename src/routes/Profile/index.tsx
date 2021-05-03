@@ -63,7 +63,7 @@ const Profile: FunctionComponent = (props: Props) => {
   } else if (props.loginState === LoginState.LOGINED) {
     content = (
       <section className={styles.userInfo}>
-        <Descriptions title="用户信息">
+        <Descriptions title="用户信息" column={1}>
           <Descriptions.Item label="用户名">{props.user.username}</Descriptions.Item>
           {props.user.email && <Descriptions.Item label="邮箱">{props.user.email}</Descriptions.Item>}
           <Descriptions.Item label={'头像'}>

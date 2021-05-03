@@ -28,6 +28,7 @@ const Register: FunctionComponent = (props: Props) => {
         className={styles.form}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
+        layout={'vertical'}
       >
         <Form.Item
           label="用户名"

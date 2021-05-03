@@ -55,11 +55,12 @@ const HomeHeader: FunctionComponent<Props> = (props: Props) => {
             className={styles.avatar}
           />
           :
-          <img
-            src={logo}
-            alt="logo"
-            className={styles.logo}
-          />
+          <div className={styles.logo}>课程系统</div>
+          // <img
+          //   src={logo}
+          //   alt="logo"
+          //   className={styles.logo}
+          // />
       }
       <BarsOutlined onClick={() => props.setMenuVisible(!props.isMenuVisible)}/>
       <Transition

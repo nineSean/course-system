@@ -1,0 +1,28 @@
+.index-module_nav-bar_3z2_Vu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 1.33333333rem;
+  line-height: 1.33333333rem;
+  z-index: 999;
+  text-align: center;
+  font-size: 0.53333333rem;
+  background-color: #0088f9;
+  color: #fff;
+}
+
+.index-module_left-icon_3HQBgr {
+  position: absolute;
+  left: 0.26666667rem;
+  line-height: 1.33333333rem;
+}
+
+.index-module_left-icon_3HQBgr > svg {
+  font-size: 0.4rem;
+}
+.index-module_form_3ZpU26 {
+  padding: 0.26666667rem;
+}
+
+/*# sourceMappingURL=444_f47604.css.map*/
