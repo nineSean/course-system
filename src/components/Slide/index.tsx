@@ -17,7 +17,10 @@ const Slide: FC<Props> = (props: Props) => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    cssEase: "linear",
     slidesToShow: 1,
     slidesToScroll: 1
   };
