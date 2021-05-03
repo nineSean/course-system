@@ -18,7 +18,6 @@ type Props = PropsWithChildren<RouteComponentProps<IParams, StaticContext, ICour
 
 const CourseDetail: FC<Props> = (props: Props) => {
   const [course, setCourse] = useState<ICourse>({} as ICourse)
-  console.log(props)
   useEffect(() => {
     const course: ICourse = props.location.state
     if (course) return setCourse(course)

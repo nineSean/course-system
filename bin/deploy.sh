@@ -19,4 +19,4 @@ docker rmi $(docker images course-platform-client -a -q)
 echo "构建新镜像"
 docker build -t course-platform-client .
 echo "启动新容器"
-docker run -p 80:80 --name course-platform-client -d course-platform-client
+docker run -p 80:80 -v /home/course/client/dist/:/usr/share/nginx/html/ -v /home/course/client/assets/:/usr/share/nginx/assets/ -v /home/course/client/nginx.conf:/etc/nginx/conf.d/nginx.conf --name course-platform-client -d course-platform-client

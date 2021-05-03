@@ -14,7 +14,6 @@ type StateProps = ReturnType<typeof mapStateToProps>
 type Props = PropsWithChildren<RouteComponentProps> & StateProps & DispatchProps
 const Register: FunctionComponent = (props: Props) => {
   function onFinish(data: RegisterPayload) {
-    console.log('form data', data)
     props.register(data)
   }
 

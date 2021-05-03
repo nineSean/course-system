@@ -7,7 +7,6 @@ import history from '@/store/history'
 import rootReducers from '@/store/reducers'
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-console.log('env', process.env.NODE_ENV)
 const store = createStore(rootReducers, composeWithDevTools(
   applyMiddleware(...[routerMiddleware(history), thunk, promise, process.env.NODE_ENV === 'dev' && logger].filter(fn => typeof fn === 'function')),
 ));
