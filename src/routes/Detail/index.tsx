@@ -48,7 +48,6 @@ const CourseDetail: FC<Props> = (props: Props) => {
               <p>价格：{course.price}</p>
               <Button className={styles.buyButton} icon={<ShoppingCartOutlined className={styles.buyIcon}/>} type={'primary'} onClick={() => {
                 props.addCartItem(course)
-                message.success('已添加至购物车', .5)
               }}>加入购物车</Button>
             </>
           }
@@ -57,4 +56,5 @@ const CourseDetail: FC<Props> = (props: Props) => {
     </>
   )
 }
+
 export default connect(null , actions)(CourseDetail)

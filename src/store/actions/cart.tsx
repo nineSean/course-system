@@ -2,12 +2,21 @@ import * as types from '../action-types'
 import {ICourse} from "@/typings"
 import {Dispatch} from "redux"
 import {push} from "connected-react-router"
+import {RootState} from "@/store/reducers"
+import {message} from 'antd'
 
 export default {
   addCartItem(item: ICourse){
-    return {
-      type: types.ADD_CART_ITEM,
-      payload: item
+    return (dispatch: Dispatch, getState: () => RootState) => {
+      if (!getState().profile.user) {
+        message.warn('请先登录')
+        return
+      }
+      dispatch({
+        type: types.ADD_CART_ITEM,
+        payload: item
+      })
+      message.success('已添加至购物车', .5)
     }
   },
   removeCartItem(id: string){
