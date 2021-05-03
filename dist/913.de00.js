@@ -1,2 +1,0 @@
-(self.webpackChunkclient=self.webpackChunkclient||[]).push([[913],{48913:(e,n,t)=>{"use strict";t.r(n),t.d(n,{default:()=>c});var u=t(67294);const c=(0,t(37703).$j)((function(e){return e.mine}))((function(e){return u.createElement("div",null,e.title)}))}}]);
-//# sourceMappingURL=913.de00.js.map

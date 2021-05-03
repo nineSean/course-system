@@ -345,6 +345,7 @@
   width: 100%;
   height: calc(100vh - 2.93333333rem);
   overflow-y: auto;
+  overflow-x: hidden;
 }
 /* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
 
